@@ -55,7 +55,7 @@ function ProfileGroup() {
             <SortableContext
                 items={profiles.map(a => a.id)}
             >
-                <RowFlexDiv>
+                <RowFlexDiv style={{margin: "10px auto"}}>
                     { profiles.length > 0 ?
                         <ColumnFlexDiv id="profile-wrapper" style={{
                             width: "95%",
