@@ -1,43 +1,35 @@
-import { notification } from "antd"
+import { NotificationInstance } from "antd/es/notification/interface"
 import axios from "axios"
 import html2canvas from "html2canvas"
 
-export const getCharInfo = async (name: string, id: number) => {
-    const url = `${process.env.REACT_APP_LOA_HOST}/v3/char/${encodeURI(name)}`
-    
+export const getCharInfo = async (name: string, id: number, noti: NotificationInstance) => {
+    const url = `${process.env.REACT_APP_LOA_HOST}/v3/char/${encodeURI(name)}`    
+
     try {
         const res = await axios.get(url)
-
         if (res.status === 200) {
             const info = res.data as CharInfo
             info.id = id
             return info
-        } 
-    } catch (err: any) {
-        notification.error({
+        }
+    } catch {
+        noti.error({
             message: "해당하는 캐릭터가 없거나, 인게임 점검 중입니다.",
             description: name
         })
     }
-        
+
     return {} as CharInfo
 }
 
 export const getGuardianPrice = async () => {
     const url = `${process.env.REACT_APP_LOA_HOST}/v3/guardian/price`
     
-    try {
-        const res = await axios.get(url)
-
-        if (res.status === 200) {
-            const info = res.data as GuardianPrice
-            return info
-        } 
-    } catch (err: any) {
-        notification.error({
-            message: "데이터 불러오기에 실패했어요."
-        })
-    }
+    const res = await axios.get(url)
+    if (res.status === 200) {
+        const info = res.data as GuardianPrice
+        return info
+    } 
         
     return {} as GuardianPrice
 }
@@ -66,10 +58,6 @@ export const saveImage = (tag: string, isDark=false, displayName = Date.now().to
         link.href = dataUrl;
         link.click();
     })
-}
-
-export const getImprintingNum = (data: BaseKeyVal[]) => {
-    return data.filter(a => !a.name.includes("감소")).map(a => a.value).join("")
 }
 
 // export const getNotiText = (data: CharInfo) => `

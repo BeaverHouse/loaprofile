@@ -24,6 +24,9 @@ export const jobBooks = [
     "이슬비", "질풍노도"
 ]
 
+export const CARD_WIDTH = 350;
+export const DARK_PRIMARY = "#00adb5";
+
 export const GuardianItems = [
     {
         name: "데스칼루다",

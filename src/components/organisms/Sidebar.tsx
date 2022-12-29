@@ -1,10 +1,11 @@
-import { SettingOutlined } from '@ant-design/icons';
+import { MenuOutlined } from '@ant-design/icons';
 import { Button, Drawer, Switch, Typography } from 'antd';
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { LoaContext } from '../../contexts';
+import { MidText } from '../atoms/styles';
 
-const { Title } = Typography
+const { Text } = Typography
  
 function Sidebar() {
 
@@ -17,7 +18,6 @@ function Sidebar() {
 
     const endpoints = [
         {name: "프로필", path: "/"},
-        // {name: "군장검사 Beta", path: "/observe"},
         {name: "가토 수익 계산", path: "/calc"}
     ]
 
@@ -41,32 +41,40 @@ function Sidebar() {
                 type="primary"
                 shape='circle'
                 size='large'
-                icon={<SettingOutlined/>} 
+                icon={<MenuOutlined/>} 
                 onClick={() => setVisible(true)}
             />            
-            <div style={{flexGrow: 1, maxWidth: 1300, fontSize: 20, fontWeight: 600, lineHeight: "40px"}}>
+            <div style={{
+                flexGrow: 1, 
+                maxWidth: 1300, 
+                fontSize: 20, 
+                fontWeight: 600, 
+                lineHeight: "40px",
+                textAlign: "center"
+            }}>
                 <Link to="/" style={{color: "white"}}>
                     Loa Profile
                 </Link>
             </div>
         </div>
         <Drawer 
-            title="설정"
+            title="Menu"
             width={250}
             placement="left" 
             onClose={() => setVisible(false)} 
-            visible={visible} 
+            open={visible} 
             bodyStyle={{display: 'flex', flexDirection: 'column'}}
         >
             <div style={{flexGrow: 1, display: 'flex', flexDirection: "column"}}>
                 {endpoints.map((end, index) => (
                     <Link key={index} to={end.path} onClick={() => setVisible(false)}>
-                        <Title type={path!==end.path ? "secondary" : "success"}>{end.name}</Title>                        
+                        <MidText type={path!==end.path ? "secondary" : "success"}>{end.name}</MidText>                        
                     </Link>
                 ))}
             </div>
             <div>
-                <Switch checked={isDark} onChange={toggleDark}/>&nbsp;&nbsp;다크 모드
+                <Switch checked={isDark} onChange={toggleDark}/>
+                <MidText>&nbsp;&nbsp;다크 모드</MidText>
             </div>
         </Drawer>
       </>
