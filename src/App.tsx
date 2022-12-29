@@ -2,7 +2,7 @@ import { ConfigProvider, Layout, theme, App as AntdApp } from 'antd';
 import { useContext } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Sidebar from './components/organisms/Sidebar';
-// import CalcPage from './components/pages/CalcPage';
+import CalcPage from './components/pages/CalcPage';
 import ProfilePage from './components/pages/ProfilePage';
 import { LoaContext } from './contexts';
 import { BLUE_TONE, DARK_PRIMARY } from './func/constant';
@@ -32,7 +32,7 @@ function App() {
             <Routes>
               <Route path="/" element={<ProfilePage />}/>
               {/* <Route path="/observe" element={<ObservePage />}/> */}
-              {/* <Route path="/calc" element={<CalcPage/>}/> */}
+              <Route path="/calc" element={<CalcPage/>}/>
             </Routes>
           </Layout>
         </BrowserRouter>

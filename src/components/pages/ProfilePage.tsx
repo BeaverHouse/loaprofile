@@ -30,22 +30,22 @@ function ProfilePage() {
       })
   }
 
-  useEffect(() => {
-    if (profiles.length < 1) {
-      let infos = [] as Promise<CharInfo>[];    
-      names.forEach((name, idx) => {
-        if(name.length > 0) infos.push(getCharInfo(name, idx+1, notification))
-      })   
-      Promise.all(infos).then(arr => {
-        setProfiles(arr.filter(a => a.id));
-        setLoading(false)
-      });
-    }
+  useEffect(() => {    
+    let infos = [] as Promise<CharInfo>[];    
+    names.forEach((name, idx) => {
+      if(name.length > 0) infos.push(getCharInfo(name, idx+1, notification))
+    })   
+    Promise.all(infos).then(arr => {
+      setProfiles(arr.filter(a => a.id));
+      setLoading(false)
+    });    
   }, [])
 
   return (
     <div style={{width: "100%", marginTop: "70px"}}>
-      {loading ? <Spin tip="Loading..." style={{marginTop: "30px"}}/>
+      {loading ? <ColumnFlexDiv>
+        <Spin tip="Loading..." style={{marginTop: "30px"}}/>
+      </ColumnFlexDiv>
        : <ColumnFlexDiv>
         <MidText>Tip : 박스를 길게 눌러 드래그해 보세요.</MidText>
         <RowFlexDiv>
