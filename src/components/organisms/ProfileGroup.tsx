@@ -12,6 +12,7 @@ import { ColumnFlexDiv, RowFlexDiv } from '../atoms/styles';
 import Collection from '../molecules/Collection';
 import { CARD_WIDTH } from '../../func/constant';
 import Profile from './Profile';
+import { isMobile } from 'react-device-detect';
 
 
 
@@ -58,13 +59,14 @@ function ProfileGroup() {
                     { profiles.length > 0 ?
                         <ColumnFlexDiv id="profile-wrapper" style={{
                             width: "95%",
-                            maxWidth: `${colCount*gridWidth}px`
+                            maxWidth: `${colCount*gridWidth + 20}px`
                         }}>
                             <div style={{
                                 display: "grid",
                                 gap: "2px",
                                 justifyContent: width > gridWidth ? "center" : "normal",
                                 gridTemplateColumns: `repeat(${colCount}, 1fr)`,
+                                overflow: width < gridWidth && TripodOpen ? "auto" : undefined
                             }}>
                                 {tags.includes("0") ? <div style={{
                                     minWidth: `${gridWidth}px`,

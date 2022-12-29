@@ -35,12 +35,13 @@ const Profile : React.FC<CharInfo> = (info) => {
       transition,
       zIndex : isDragging ? "100" : "auto",
       border: isDragging ? "3px solid red" : `1px solid ${BLUE_TONE}`,
+      borderRadius: "8px"
     };
   
     return (
         <div ref={setNodeRef} {...attributes} {...listeners} style={style} id={`profile-loa-${info.id}`}>
             <AntdCard.Grid hoverable={false} 
-                style={{width: "100%", height: "100%",  boxShadow: 'unset', borderRadius: "8px"}}
+                style={{width: "100%", height: "100%",  boxShadow: 'unset'}}
             >
                 <RowFlexDiv style={{
                     alignItems:"stretch"
