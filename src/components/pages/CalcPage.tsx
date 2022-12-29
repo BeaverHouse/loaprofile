@@ -21,13 +21,15 @@ function CalcPage() {
 
     return (
       <div style={{width: "100%", marginTop: "70px"}}>
-        {loading ? <Spin tip="Loading..." style={{marginTop: "30px"}}/> : <>
+        {loading ? <ColumnFlexDiv>
+            <Spin tip="Loading..." style={{marginTop: "30px"}}/>
+        </ColumnFlexDiv> : <>
             <RowFlexDiv>
               <Button type="primary" style={{margin: "2px"}} onClick={() => saveImage(`guardian`, isDark)}>
                   다운로드
               </Button>
             </RowFlexDiv>
-            <ColumnFlexDiv id="guardian" style={{width: "850px", margin: "0 auto"}}>
+            <ColumnFlexDiv id="guardian" style={{ width: "100%", margin: "0 auto", overflow: "scroll"}}>
               <MidText>갱신 시간 : {prices.time}</MidText>
               <br/>
               <BigText>오늘의 거래 가격</BigText>

@@ -30,9 +30,9 @@ const Header: React.FC<BasicInfo> = (info) => {
                     margin: "2.5px 7.5px 2.5px 5px",
                     borderRadius: "5px"
                 }}/>
-                <div style={{width: "220px", textAlign: "left"}}>
+                <div style={{width: "210px", textAlign: "left"}}>
                     <MidText
-                        style={{margin: "5px"}}
+                        style={{margin: "2px"}}
                         editable={info.isSafe ? {
                             onChange: setEditableStr,
                             tooltip: "이름 수정",
@@ -46,7 +46,7 @@ const Header: React.FC<BasicInfo> = (info) => {
                         {editableStr}
                     </MidText>
                 </div>
-                <div style={{margin: "0 5px 0 5px", width: "60px"}}>
+                <div style={{margin: "0 5px 0 5px", width: "70px"}}>
                     <MidText>
                         Item
                     </MidText>
