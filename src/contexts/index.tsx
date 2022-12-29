@@ -32,7 +32,7 @@ interface Props {
     const [tags, setTags] = useState(
       window.localStorage.getItem("loa_tag") ? 
       Array.from(new Set(window.localStorage.getItem("loa_tag")?.split(",")))
-      : ["0","1","2","3","4","5","6"]
+      : ["1","2","3","4","5","6"]
     );
 
     const toggleDark = () => {
