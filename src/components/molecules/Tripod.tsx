@@ -37,7 +37,7 @@ const Tripod: React.FC<TripodInfo> = (info) => {
                                     <RowFlexDiv style={{marginBottom: "5px"}}>
                                         <SmallIconImg src={filtered[0].src}/>
                                         <br/>
-                                        <SmallText>{filtered[0].originSkill}</SmallText>
+                                        <SmallText>&nbsp;{filtered[0].originSkill}</SmallText>
                                     </RowFlexDiv>                                 
                                     {filtered.map((tripod, idx2) => (
                                         <div key={"tripod" + idx2} style={{display: 'flex', margin: "1px"}}>
