@@ -80,6 +80,7 @@ const SubEquip: React.FC<SubEquipInfo> = (info) => {
                     display: "grid",
                     gridTemplateColumns: "1fr 1fr",
                     height: "130px",
+                    gap: '3px',
                     padding: "5px",
                     flexGrow: 1
                 }}>
