@@ -33,3 +33,7 @@ export const IconImg = styled.img`
     width: 35px;
     height: 35px;
 `
+export const SmallIconImg = styled.img`
+    width: 28px;
+    height: 28px;
+`

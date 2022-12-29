@@ -24,8 +24,20 @@ export const jobBooks = [
     "이슬비", "질풍노도"
 ]
 
+export const tagsData = [
+    '수집품', 
+    '요약', 
+    '무기', 
+    '방어구',
+    '악세사리&각인',
+    '보석',
+    "카드",
+    "트라이포드"
+];
+
 export const CARD_WIDTH = 350;
 export const DARK_PRIMARY = "#00adb5";
+export const BLUE_TONE = "#A2D5F2";
 
 export const GuardianItems = [
     {

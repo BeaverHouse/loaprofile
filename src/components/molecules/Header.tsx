@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { LoaContext } from '../../contexts';
-import { CARD_WIDTH, DARK_PRIMARY } from '../../func/constant';
+import { BLUE_TONE, CARD_WIDTH, DARK_PRIMARY } from '../../func/constant';
 import { BigText, IconImg, MidText, RowFlexDiv } from '../atoms/styles';
 import { EditOutlined, WarningOutlined } from '@ant-design/icons';
+import { Watermark } from 'antd';
 
 const Header: React.FC<BasicInfo> = (info) => {
     const [editableStr, setEditableStr] = useState(
@@ -11,13 +12,23 @@ const Header: React.FC<BasicInfo> = (info) => {
     const { isDark } = useContext(LoaContext)
 
     return (
-        <>
+        <Watermark content="beta.loaprofile.com"
+            font={{
+                color: "gray", fontSize: 12
+            }}
+            width={100}
+            rotate={0}
+            height={300}
+            gap={[1000,1000]}
+            offset={[10,0]}
+        >
             <RowFlexDiv style={{
-                width: `${CARD_WIDTH}px`, minHeight: "40px"
+                width: `${CARD_WIDTH}px`, minHeight: "40px", paddingTop: "10px"
             }}>
                 <IconImg src={`images/jobs/${info.job}.png`} style={{
-                backgroundColor: isDark ? "#a7aeb4" : undefined,
-                margin: "2.5px 7.5px 2.5px 5px"
+                    backgroundColor: isDark ? BLUE_TONE : undefined,
+                    margin: "2.5px 7.5px 2.5px 5px",
+                    borderRadius: "5px"
                 }}/>
                 <div style={{width: "220px", textAlign: "left"}}>
                     <MidText
@@ -58,7 +69,7 @@ const Header: React.FC<BasicInfo> = (info) => {
                     </BigText>
                 </div>
             }
-        </>
+        </Watermark>
     )
 }
 

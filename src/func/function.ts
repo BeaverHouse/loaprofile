@@ -35,11 +35,10 @@ export const getGuardianPrice = async () => {
 }
 
 export const getColor = (quality: number, isDark=false) => {
-    if (isDark) return undefined
     if (quality === 100) return "#FF5E00"
     else if (quality >= 90) return "#FF00DD"
-    else if (quality >= 70) return "#0054FF"
-    else return undefined 
+    else if (quality >= 70) return "#4A9FF5"
+    else return isDark ? "#ecf0f1" : "black" 
 }
 
 export const saveImage = (tag: string, isDark=false, displayName = Date.now().toString()) => {

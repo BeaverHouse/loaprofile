@@ -1,6 +1,7 @@
 import { Tooltip, Watermark } from 'antd'
 import React from 'react'
-import { BigText, MidText, SmallText } from '../atoms/styles'
+import { BLUE_TONE } from '../../func/constant'
+import { BigText, MidText } from '../atoms/styles'
 
 const Collection: React.FC<{info: BaseKeyVal[]}> = ({info}) => {
 
@@ -15,7 +16,7 @@ const Collection: React.FC<{info: BaseKeyVal[]}> = ({info}) => {
             gap={[1000,1000]}
             offset={[10,5]}
             style={{
-                border: '1px solid #a7aeb4',
+                border: `1px solid ${BLUE_TONE}`,
                 borderRadius: "8px",
                 width: "100%",
             }}

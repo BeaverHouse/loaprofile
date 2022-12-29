@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { LoaContext } from '../../contexts';
 import { useSensors, useSensor, KeyboardSensor, DndContext, closestCenter, DragEndEvent, MouseSensor } from '@dnd-kit/core';
 import {
@@ -17,9 +17,12 @@ import Profile from './Profile';
 
 function ProfileGroup() {
 
-    const { setProfiles, addProfile, profiles } = useContext(LoaContext)
+    const { setProfiles, profiles, tags } = useContext(LoaContext)
+    
+    const TripodOpen = tags.includes("7")
+    const gridWidth = TripodOpen ? CARD_WIDTH*2 : CARD_WIDTH
     const { width } = useWindowDimensions()
-    const colCount = Math.min(profiles.length, 3, Math.max(1, Math.floor(width / CARD_WIDTH)))
+    const colCount = Math.min(profiles.length, TripodOpen ? 1 : 3, Math.max(1, Math.floor(width / gridWidth)))
 
     const sensors = useSensors(
         useSensor(MouseSensor),
@@ -37,7 +40,12 @@ function ProfileGroup() {
             
           setProfiles(arrayMove(profiles, oldIndex, newIndex));
         }
-    }   
+    }
+
+    useEffect(() => {
+
+    }, [profiles])
+    
 
     return (
         <DndContext 
@@ -52,20 +60,20 @@ function ProfileGroup() {
                     { profiles.length > 0 ?
                         <ColumnFlexDiv id="profile-wrapper" style={{
                             width: "95%",
-                            maxWidth: `${colCount*CARD_WIDTH}px`
+                            maxWidth: `${colCount*gridWidth}px`
                         }}>
                             <div style={{
                                 display: "grid",
                                 gap: "2px",
-                                justifyContent: width > CARD_WIDTH ? "center" : "normal",
+                                justifyContent: width > gridWidth ? "center" : "normal",
                                 gridTemplateColumns: `repeat(auto-fit)}`,
                             }}>
-                                <div style={{
-                                    minWidth: `${CARD_WIDTH}px`,
+                                {tags.includes("0") ? <div style={{
+                                    minWidth: `${gridWidth}px`,
                                     gridColumn: `span ${colCount}`,
                                 }}>
                                     <Collection info={profiles[0].collectInfo}/>
-                                </div>
+                                </div> : null}
                                 {profiles.map(a => a.id).map((id) => {
                                     const profile = profiles.find(a => a.id === id) || {} as CharInfo;
                                     return <Profile {...profile}/>

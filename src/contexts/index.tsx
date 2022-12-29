@@ -9,7 +9,9 @@ const LoaContext = createContext({
     isDark: false,
     toggleDark: () => {},
     isSecret: false,
-    toggleSecret: () => {}
+    toggleSecret: () => {},
+    tags: [] as string[],
+    toggleTags: (tags: string[]) => {}
 })
 
 interface Props {
@@ -19,17 +21,29 @@ interface Props {
   const LoaProvider = ({ children }: Props): JSX.Element => {
   
     const [names, setNames] = useState(
-        Array.from(new Set(window.localStorage.getItem("loa_inv")?.split(","))) || []
+      window.localStorage.getItem("loa_inv") ? 
+      Array.from(new Set(window.localStorage.getItem("loa_inv")?.split(",")))
+      : []
     );
 
     const [profiles, setProfiles] = useState([] as CharInfo[]);
     const [isSecret, setIsSecret] = useState(window.localStorage.getItem("loa_secret") === "true")
     const [isDark, setIsDark] = useState(window.localStorage.getItem("dark_mode") === "true")
+    const [tags, setTags] = useState(
+      window.localStorage.getItem("loa_tag") ? 
+      Array.from(new Set(window.localStorage.getItem("loa_tag")?.split(",")))
+      : ["0","1","2","3","4","5","6"]
+    );
 
     const toggleDark = () => {
       const newVal = !isDark
       setIsDark(newVal) 
       window.localStorage.setItem("dark_mode", newVal.toString())
+    }
+
+    const toggleTags = (newTags: string[]) => {
+      setTags(newTags)
+      window.localStorage.setItem("loa_tag", newTags.join(","))
     }
     
     const toggleSecret = () => {
@@ -65,7 +79,9 @@ interface Props {
             isDark,
             toggleDark,
             isSecret,
-            toggleSecret
+            toggleSecret,
+            tags,
+            toggleTags
           }}>
           {children}
         </LoaContext.Provider>

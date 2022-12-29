@@ -1,11 +1,9 @@
 import { MenuOutlined } from '@ant-design/icons';
-import { Button, Drawer, Switch, Typography } from 'antd';
+import { Button, Drawer, Switch } from 'antd';
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { LoaContext } from '../../contexts';
 import { MidText } from '../atoms/styles';
-
-const { Text } = Typography
  
 function Sidebar() {
 
