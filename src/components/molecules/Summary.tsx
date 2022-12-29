@@ -30,7 +30,7 @@ const Summary: React.FC<CharInfo> = (info) => {
                 <MidText>SP {info.basicInfo.skillPt} / {info.basicInfo.maxSkillPt}</MidText>
             </ColumnFlexDiv>
             <ColumnFlexDiv style={{
-                width: "110px",
+                width: "100px",
                 justifyContent: "center",
                 borderBottom: `1px dashed ${BLUE_TONE}`,
                 textAlign: "left",
@@ -44,7 +44,7 @@ const Summary: React.FC<CharInfo> = (info) => {
                 </MidText>
             </ColumnFlexDiv>
             <ColumnFlexDiv style={{
-                width: "125px",
+                width: "135px",
                 textAlign: "left",
                 padding: "10px",
                 alignItems: "center",
@@ -84,7 +84,7 @@ const Summary: React.FC<CharInfo> = (info) => {
                 </MidText>
             </ColumnFlexDiv>
             <ColumnFlexDiv style={{
-                width: "110px",
+                width: "100px",
                 padding: "5px",
                 justifyContent: "center"
             }}>
