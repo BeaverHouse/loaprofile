@@ -1,15 +1,26 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { LoaContext } from '../../contexts';
 import { BLUE_TONE, CARD_WIDTH, DARK_PRIMARY } from '../../func/constant';
 import { BigText, IconImg, MidText, RowFlexDiv } from '../atoms/styles';
 import { EditOutlined, WarningOutlined } from '@ant-design/icons';
 import { Watermark } from 'antd';
 
-const Header: React.FC<BasicInfo> = (info) => {
+const Header: React.FC<{info: BasicInfo, id: number}> = ({info, id}) => {
+
     const [editableStr, setEditableStr] = useState(
         info.displayName ? info.displayName : info.nickname
     );
-    const { isDark } = useContext(LoaContext)
+    const { isDark, profiles } = useContext(LoaContext)
+
+    const updateDisplayName = (name: string) => {
+        const profile = profiles.find(a => a.id === id) || {} as CharInfo;
+        profile.basicInfo.displayName = name
+        setEditableStr(name)
+    }
+
+    useEffect(() => {
+        setEditableStr(info.displayName ? info.displayName : info.nickname)
+    }, [id])
 
     return (
         <Watermark content="beta.loaprofile.com"
@@ -34,7 +45,7 @@ const Header: React.FC<BasicInfo> = (info) => {
                     <MidText
                         style={{margin: "2px"}}
                         editable={info.isSafe ? {
-                            onChange: setEditableStr,
+                            onChange: updateDisplayName,
                             tooltip: "이름 수정",
                             maxLength: 12,
                             enterIcon: null,

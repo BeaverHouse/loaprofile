@@ -24,12 +24,12 @@ function ProfileGroup() {
     const { width } = useWindowDimensions()
     const colCount = Math.min(profiles.length, TripodOpen ? 1 : 3, Math.max(1, Math.floor(width / gridWidth)))
 
-    console.log(colCount)
-
     const sensors = useSensors(
-        useSensor(MouseSensor),
-        useSensor(KeyboardSensor, {
-          coordinateGetter: sortableKeyboardCoordinates,
+        useSensor(MouseSensor, {
+            activationConstraint: {
+              delay: 500,
+              tolerance: 20,
+            },
         })
     );
     
@@ -41,13 +41,9 @@ function ProfileGroup() {
           const newIndex = profiles.map(a => a.id).indexOf(parseInt(over?.id.toString() || '0'));
             
           setProfiles(arrayMove(profiles, oldIndex, newIndex));
+          
         }
-    }
-
-    useEffect(() => {
-
-    }, [profiles])
-    
+    }    
 
     return (
         <DndContext 
