@@ -29,7 +29,7 @@ function CalcPage() {
                   다운로드
               </Button>
             </RowFlexDiv>
-            <ColumnFlexDiv id="guardian" style={{ width: "100%", margin: "0 auto", overflow: "scroll"}}>
+            <ColumnFlexDiv id="guardian" style={{ width: "100%", margin: "0 auto", overflow: "auto"}}>
               <MidText>갱신 시간 : {prices.time}</MidText>
               <br/>
               <BigText>오늘의 거래 가격</BigText>
