@@ -24,6 +24,8 @@ function ProfileGroup() {
     const { width } = useWindowDimensions()
     const colCount = Math.min(profiles.length, TripodOpen ? 1 : 3, Math.max(1, Math.floor(width / gridWidth)))
 
+    console.log(colCount)
+
     const sensors = useSensors(
         useSensor(MouseSensor),
         useSensor(KeyboardSensor, {
@@ -66,7 +68,7 @@ function ProfileGroup() {
                                 display: "grid",
                                 gap: "2px",
                                 justifyContent: width > gridWidth ? "center" : "normal",
-                                gridTemplateColumns: `repeat(auto-fit)}`,
+                                gridTemplateColumns: `repeat(${colCount}, 1fr)`,
                             }}>
                                 {tags.includes("0") ? <div style={{
                                     minWidth: `${gridWidth}px`,
