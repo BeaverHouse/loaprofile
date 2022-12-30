@@ -1,10 +1,10 @@
 import { MenuOutlined } from '@ant-design/icons';
-import { Button, Drawer, Switch } from 'antd';
+import { Button, Drawer, Switch, Typography } from 'antd';
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { LoaContext } from '../../contexts';
 import { MidText } from '../atoms/styles';
- 
+
 function Sidebar() {
 
     /**
@@ -69,6 +69,11 @@ function Sidebar() {
                         <MidText type={path!==end.path ? "secondary" : "success"}>{end.name}</MidText>                        
                     </Link>
                 ))}
+                <br/>
+                <Typography.Link href="https://github.com/BeaverHouse/loa-check-electron/releases" rel="noreferrer" target="_blank" 
+                    style={{fontSize: "13px"}} type="success" strong>
+                    클립보드 군장검사 (Windows)
+                </Typography.Link>
             </div>
             <div>
                 <Switch checked={isDark} onChange={toggleDark}/>

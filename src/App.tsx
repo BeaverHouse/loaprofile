@@ -21,7 +21,8 @@ function App() {
           colorBgContainer: "#2c3e50",
           colorBorder: BLUE_TONE,
           colorPrimary: DARK_PRIMARY,
-          colorText: "#ecf0f1"
+          colorText: "#ecf0f1",
+          colorLinkHover: DARK_PRIMARY
         } : undefined
       }}
     >
