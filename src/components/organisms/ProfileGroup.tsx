@@ -47,26 +47,25 @@ function ProfileGroup() {
     }    
 
     return (
-        <DndContext 
-            sensors={sensors}
-            collisionDetection={closestCenter}
-            onDragEnd={handleDragEnd}
-        >
-            <SortableContext
-                items={profiles.map(a => a.id)}
+        <RowFlexDiv style={{margin: "10px auto"}}>
+            <DndContext 
+                sensors={sensors}
+                collisionDetection={closestCenter}
+                onDragEnd={handleDragEnd}
             >
-                <RowFlexDiv style={{margin: "10px auto"}}>
-                    { profiles.length > 0 ?
-                        <ColumnFlexDiv id="profile-wrapper" style={{
-                            width: "95%",
-                            maxWidth: `${colCount*gridWidth + 20}px`
-                        }}>
+                <SortableContext
+                    items={profiles.map(a => a.id)}
+                >
+                { profiles.length > 0 ?
+                    <ColumnFlexDiv id="profile-wrapper" style={{
+                        width: "100%"
+                    }}> 
+                        <div style={{width: gridWidth*colCount + 2*(colCount-1)}}>
                             <div style={{
                                 display: "grid",
                                 gap: "2px",
                                 justifyContent: width > gridWidth ? "center" : "normal",
-                                gridTemplateColumns: `repeat(${colCount}, 1fr)`,
-                                overflow: width < gridWidth && TripodOpen ? "auto" : undefined
+                                gridTemplateColumns: `repeat(${colCount}, 1fr)`
                             }}>
                                 {tags.includes("0") ? <div style={{
                                     minWidth: `${gridWidth}px`,
@@ -79,11 +78,13 @@ function ProfileGroup() {
                                     return <Profile {...profile}/>
                                 })}
                             </div>
-                        </ColumnFlexDiv>
-                    : <Empty description={"아직 아무것도 없어요..."}/> }
-                </RowFlexDiv>
-            </SortableContext>
-        </DndContext>
+                        </div>                            
+                    </ColumnFlexDiv>
+                : <Empty description={"아직 아무것도 없어요..."}/> }
+                </SortableContext>
+            </DndContext>
+        </RowFlexDiv>
+                
     )
 }
 

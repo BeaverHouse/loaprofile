@@ -42,7 +42,7 @@ function ProfilePage() {
   }, [])
 
   return (
-    <div style={{width: "100%", marginTop: "70px"}}>
+    <div style={{width: "100%", marginTop: "70px", overflowX: "auto"}}>
       {loading ? <ColumnFlexDiv>
         <Spin tip="Loading..." style={{marginTop: "30px"}}/>
       </ColumnFlexDiv>
