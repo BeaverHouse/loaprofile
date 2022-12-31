@@ -34,7 +34,7 @@ function CalcPage() {
                 <MidText>갱신 시간 : {prices.time}</MidText>
                 <br/>
                 <BigText>오늘의 거래 가격</BigText>
-                <table style={{marginTop: "5px", minWidth: "800px", justifyContent: "center"}}>
+                <table style={{margin: "5px auto", minWidth: "800px", justifyContent: "center"}}>
                   <tbody>
                     <tr>
                       {prices.data.filter(a => Math.floor(a.code/1000) === 66110).map((a => (
