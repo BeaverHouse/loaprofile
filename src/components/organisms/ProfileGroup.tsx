@@ -60,7 +60,7 @@ function ProfileGroup() {
                     <ColumnFlexDiv id="profile-wrapper" style={{
                         width: "100%"
                     }}> 
-                        <div style={{width: gridWidth*colCount + 2*(colCount-1)}}>
+                        <div style={{width: (gridWidth+5)*colCount + 2*(colCount-1)}}>
                             <div style={{
                                 display: "grid",
                                 gap: "2px",
